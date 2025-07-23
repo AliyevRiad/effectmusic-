@@ -41,6 +41,3 @@ Flask-RESTful==0.3.9
 
 # Pyrogram 2.1.23 ZIP faylından
 https://github.com/KurimuzonAkuma/pyrogram/archive/v2.1.23.zip
-
-# SafoneAPI GIT reposundan (əgər yuxarıdakı SafoneAPI modul kimi yoxdursa)
-git+https://github.com/AsmSafone/SafoneAPI
