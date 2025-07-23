@@ -1,12 +1,15 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs19-bullseye
+FROM python:3.10-slim
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# Node.js əlavə et
+RUN apt-get update && apt-get install -y curl gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs ffmpeg && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
-WORKDIR /app/
-RUN pip3 install --no-cache-dir -U -r requirements.txt
+WORKDIR /app
+COPY . /app
 
-CMD bash start
+RUN pip install --upgrade pip setuptools
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python3", "-m", "BrandrdXMusic"]
