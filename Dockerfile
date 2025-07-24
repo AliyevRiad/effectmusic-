@@ -1,10 +1,13 @@
 FROM python:3.10-slim
 
-# Node.js əlavə et
-RUN apt-get update && apt-get install -y curl gnupg && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs ffmpeg && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Node.js, git və digər asılılıqları əlavə et
+RUN apt-get update && apt-get install -y \
+    curl \
+    gnupg \
+    git \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs ffmpeg \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY . /app
