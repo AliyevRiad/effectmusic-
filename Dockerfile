@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.10-slim-bullseye
 
 # Node.js, git və digər asılılıqları əlavə et
 RUN apt-get update && apt-get install -y \
