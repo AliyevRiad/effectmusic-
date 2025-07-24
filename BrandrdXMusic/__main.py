@@ -13,6 +13,23 @@ from BrandrdXMusic.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
 
+import os
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello, Heroku!"
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+
+
+
+
 async def init():
     if (
         not config.STRING1
@@ -56,6 +73,9 @@ async def init():
     await app.stop()
     await userbot.stop()
     LOGGER("FrozenXMusic").info("Stopping Frozen Music Bot...")
+
+
+
 
 
 if __name__ == "__main__":
